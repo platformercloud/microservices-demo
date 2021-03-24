@@ -22,7 +22,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Sonar Scan
-        run: ./gradlew sonarqube \
+        run: src/adservice/gradlew sonarqube \
               -Dsonar.projectKey=adservice \
               -Dsonar.host.url=https://sonarqube.apps.microservice-poc.platformer.cloud \
               -Dsonar.login=3b5d0dbbab5c0f97e30b432cdd317a7cfbda1d42
