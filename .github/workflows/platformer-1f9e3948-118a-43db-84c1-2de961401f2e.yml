@@ -33,6 +33,15 @@ jobs:
         run: docker build --tag
           ${SERVICE_NAME}:${{steps.event-version.outputs.SOURCE_TAG }} --file
           src/frontend/Dockerfile src/frontend
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+            image-ref: ${SERVICE_NAME}:${{steps.event-version.outputs.SOURCE_TAG }}
+            format: 'table'
+            exit-code: '1'
+            ignore-unfixed: true
+            vuln-type: 'os,library'
+            severity: 'CRITICAL,HIGH'
       - name: GitHub Image Push
         run: docker push $SERVICE_NAME:${{steps.event-version.outputs.SOURCE_TAG }}
       - name: Platformer Deploy
