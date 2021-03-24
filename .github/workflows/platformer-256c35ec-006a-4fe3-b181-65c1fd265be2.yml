@@ -22,7 +22,7 @@ jobs:
           host: https://sonarqube.apps.microservice-poc.platformer.cloud
           login: d97ee05364a35508db9897d36ffd33e332440b9e
           projectKey: adservice
-          projectBaseDir: src/adservice
+          projectBaseDir: ./src/adservice
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
         with:
